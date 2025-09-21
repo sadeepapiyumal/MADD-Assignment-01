@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="frame_bg">#5FE978</color>
+    <color name="card_bg">#FFEED4</color>
+    <color name="card_bg_half">#80FFEED4</color> <!-- 50% alpha -->
+    <color name="nav_icon">#034503</color>
+
+</resources>
