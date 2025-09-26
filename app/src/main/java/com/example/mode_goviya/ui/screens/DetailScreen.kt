@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.mode_goviya.data.JsonLoader
-import com.example.mode_goviya.util.TtsHelper
+import com.example.mode_goviya.util.TtsManager
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
@@ -26,10 +26,10 @@ fun DetailScreen(navController: NavController, id: Int?) {
     }
 
     // TTS lifecycle
-    val ttsHelper = remember { TtsHelper(context) }
+    val ttsHelper = remember { TtsManager(context) }
     DisposableEffect(Unit) {
         ttsHelper.init()
-        onDispose { ttsHelper.release() }
+        onDispose { ttsHelper.shutdown() }
     }
 
     Column(modifier = Modifier

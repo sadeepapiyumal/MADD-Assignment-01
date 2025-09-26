@@ -1,13 +1,27 @@
 package com.example.mode_goviya.util
 
 import android.content.Context
+import android.content.SharedPreferences
 
-class Prefs(private val context: Context) {
-    private val prefs = context.getSharedPreferences("mode_goviya_prefs", Context.MODE_PRIVATE)
-    fun setDistrict(d: String) = prefs.edit().putString("district", d).apply()
-    fun getDistrict(): String? = prefs.getString("district", null)
-    fun setVariety(v: String) = prefs.edit().putString("variety", v).apply()
-    fun getVariety(): String? = prefs.getString("variety", null)
-    fun setFirstLaunchFalse() = prefs.edit().putBoolean("firstLaunch", false).apply()
-    fun isFirstLaunch() = prefs.getBoolean("firstLaunch", true)
+class Prefs(context: Context) {
+    private val prefs: SharedPreferences =
+        context.getSharedPreferences("mode_goviya_prefs", Context.MODE_PRIVATE)
+
+    fun setDistrict(district: String) {
+        prefs.edit().putString("district", district).apply()
+    }
+
+    fun getDistrict(): String = prefs.getString("district", "") ?: ""
+
+    fun setVariety(variety: String) {
+        prefs.edit().putString("variety", variety).apply()
+    }
+
+    fun getVariety(): String = prefs.getString("variety", "") ?: ""
+
+    fun setFirstLaunch(isFirst: Boolean) {
+        prefs.edit().putBoolean("first_launch", isFirst).apply()
+    }
+
+    fun isFirstLaunch(): Boolean = prefs.getBoolean("first_launch", true)
 }
