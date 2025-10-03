@@ -17,18 +17,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mode_goviya.R
-import com.example.mode_goviya.util.TtsManager
+import com.example.mode_goviya.ui.components.SpeakerTtsButton
 
 @Composable
 fun WateringPage(navController: NavController) {
     val context = LocalContext.current
-    val tts = remember { TtsManager(context) }
-
-    // Initialize TTS once, clean up on dispose
-    DisposableEffect(Unit) {
-        tts.init() // defaults to Sinhala locale
-        onDispose { tts.shutdown() }
-    }
 
     val description = "වැසි ජලය භාවිතයෙන් පහත් බිම් වල සිදු කරන වී වගාවේ දී වැපිරීමෙන් හෝ පැළ සිටුවීමෙන් පසු" +
             " සෙන්ටිමීටර් 4 - 5 ක් උසට ජලය බැඳ තබයි. මෙලෙස අනවශ්‍ය ප්‍රමාණ වලින්" +
@@ -60,6 +53,14 @@ fun WateringPage(navController: NavController) {
                     .offset(y = 25.dp)
             )
 
+            // Speaker icon button to trigger TTS
+            SpeakerTtsButton(
+                textToSpeak = description,
+                modifier = Modifier
+                    .offset(y = 4.dp)
+                    .size(36.dp)
+            )
+
             Image(
                 painter = painterResource(id = R.drawable.watering),
                 contentDescription = "Watering",
@@ -88,25 +89,6 @@ fun WateringPage(navController: NavController) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // TTS Buttons
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Button(
-                onClick = { tts.speak(description) },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF034503))
-            ) {
-                Text("ඇහුනට", color = Color.White, fontSize = 16.sp)
-            }
-
-            Button(
-                onClick = { tts.stop() },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB71C1C))
-            ) {
-                Text("නවතා", color = Color.White, fontSize = 16.sp)
-            }
-        }
+        // Speaker button above handles TTS
     }
 }

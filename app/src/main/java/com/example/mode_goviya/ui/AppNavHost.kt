@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.padding
 
@@ -29,10 +30,14 @@ fun AppNavHost() {
     val startDestination = "onboarding" // force onboarding
 
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
     Scaffold(
         bottomBar = {
-            // Hide bottom bar on onboarding
-            if (navController.currentBackStackEntry?.destination?.route != "onboarding") {
+            // Hide bottom bar on onboarding and selection screens
+            val hideRoutes = setOf("onboarding", "district_selection", "variety_selection")
+            if (currentRoute !in hideRoutes) {
                 BottomBar(navController)
             }
         }
@@ -51,7 +56,7 @@ fun AppNavHost() {
             composable("district_selection") {
                 DistrictSelectionScreen(
                     navController = navController,
-                    onDistrictSelected = { selectedDistrict, selectedVeriety ->
+                    onDistrictSelected = { selectedDistrict ->
                         prefs.setDistrict(selectedDistrict)
                         navController.navigate("variety_selection")
                     }

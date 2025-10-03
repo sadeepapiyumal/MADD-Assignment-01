@@ -17,9 +17,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mode_goviya.R
+import com.example.mode_goviya.ui.components.SpeakerTtsButton
 
 @Composable
 fun SowingPage(navController: NavController) {
+    val description = "වී වගාවෙන් වැඩි අස්වැන්නක් ලබා ගැනීම සඳහා කන්නයට හා ප්\u200Dරදේශයට ගැලපෙන විවර්ගය තෝරාගත යුතුය. මෙයට අමතරව පාරිභෝගික රුචිකත්වය පිළිබඳව ද සැලකිලිමත් විය යුතුය.\n" +
+            "\n" +
+            "බීජ වැපිරීම ප්\u200Dරධාන වශයෙන් තෙත් ක්\u200Dරමයට හෝ වියළි ක්\u200Dරමයට සිදුකළ හැකිය.\n" +
+            "\n" +
+            "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n"
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -44,6 +50,13 @@ fun SowingPage(navController: NavController) {
 
             )
 
+            SpeakerTtsButton(
+                textToSpeak = description,
+                modifier = Modifier
+                    .offset(y = 0.dp)
+                    .size(36.dp)
+            )
+
             Image(
                 painter = painterResource(id = R.drawable.sowing),
                 contentDescription = "Sowing",
@@ -63,11 +76,7 @@ fun SowingPage(navController: NavController) {
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
             Text(
-                text = "වී වගාවෙන් වැඩි අස්වැන්නක් ලබා ගැනීම සඳහා කන්නයට හා ප්\u200Dරදේශයට ගැලපෙන විවර්ගය තෝරාගත යුතුය. මෙයට අමතරව පාරිභෝගික රුචිකත්වය පිළිබඳව ද සැලකිලිමත් විය යුතුය.\n" +
-                        "\n" +
-                        "බීජ වැපිරීම ප්\u200Dරධාන වශයෙන් තෙත් ක්\u200Dරමයට හෝ වියළි ක්\u200Dරමයට සිදුකළ හැකිය.\n" +
-                        "\n" +
-                        "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n",
+                text = description,
                 fontSize = 16.sp,
                 textAlign = TextAlign.Justify,
                 modifier = Modifier.padding(16.dp)

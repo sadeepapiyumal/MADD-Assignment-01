@@ -37,20 +37,20 @@ fun OnboardingScreen(navController: NavController, prefs: Prefs) {
     val pages = listOf(
         OnboardPage(
             imageRes = R.drawable.logo2,
-            description = "නිවැරදි ක්‍රමයෙට වගා කිරීමෙන් හා ගබඩා කිරීමෙන්\nඔබේ අස්වැන්න වැඩි කරගත හැකි බව ඔබ දන්නවාද?\n\n\n වගා කරන හරිම ක්රමය \n" +
+            description = "නිවැරදි ක්‍රමයට වගා කිරීමෙන් හා ගබඩා කිරීමෙන්\nඔබේ අස්වැන්න වැඩි කරගත හැකි බව ඔබ දන්නවාද?\n\n\n වගා කරන හරිම ක්\u200Dරමය \n" +
                     "දැන් ඔබේ අතේ",
             textOffsetY = -100
 
         ),
         OnboardPage(
             imageRes = R.drawable.logo2,
-            description = "නිවැරදි උපදෙස් ලබා ගැනීමට අදාළ ලැයිස්තුවෙන් දිස්රික්කය  සහ වී වර්ගය තෝරන්න",
+            description = "නිවැරදි උපදෙස් ලබා ගැනීමට අදාළ ලැයිස්තුවෙන් දිස්ත්\u200Dරික්කය  සහ වී වර්ගය තෝරන්න",
             textOffsetY = 0
 
         ),
         OnboardPage(
             imageRes = R.drawable.logo2,
-            description = "අවශ්ය උපදෙස් කියවීමට හෝ සවන් දීමට අදාළ නම මත ස්පර්ශ කරන්න.",
+            description = "අවශ්\u200Dය උපදෙස් කියවීමට හෝ සවන් දීමට අදාළ නම මත ස්පර්ශ කරන්න.",
             textOffsetY = -100
 
         ),
@@ -220,7 +220,7 @@ private fun OnboardingPageView(page: OnboardPage, pageIndex: Int ) {
                     contentDescription = "Extra Image",
                     modifier = Modifier
                         .size(40.dp)
-                        .offset(x = (-135).dp, y = (-38).dp) // manually set location
+                        .offset(x = (-68).dp, y = (-38).dp) // manually set location
                 )
             }
 

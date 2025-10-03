@@ -17,9 +17,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mode_goviya.R
+import com.example.mode_goviya.ui.components.SpeakerTtsButton
 
 @Composable
 fun GroundPreparationPage(navController: NavController) {
+    val description = "වී වගාව සඳහා බිම් සැකසීම මගින් වැපිරීම සඳහා පස සකසා ගැනීම, වල් පැළෑටි පාලනය, මුල් වර්ධනය ක්\u200Dරමවත් කිරීම," +
+            " කාබනික ද්\u200Dරව්\u200Dය පසට මිශ්\u200Dර කිරීම හා පළිබෝධ පාලනය කිරීම යන අරමුණු ඉටුකර ගත හැකිය." +
+            " බිම් සැකසීම තෙත් සහ විය ලියන ආකාර වලින් සිදු කළ හැකි අතර බහුලව භාවිතා වෙන්නේ තෙත් ආකාරයට(මඩට) බිම් සැකසීමයි.\n" +
+            "\n" +
+            "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n"
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -44,6 +50,13 @@ fun GroundPreparationPage(navController: NavController) {
 
             )
 
+            SpeakerTtsButton(
+                textToSpeak = description,
+                modifier = Modifier
+                    .offset(y = 0.dp)
+                    .size(36.dp)
+            )
+
             Image(
                 painter = painterResource(id = R.drawable.groundpreparation),
                 contentDescription = "Ground Preparation",
@@ -63,11 +76,7 @@ fun GroundPreparationPage(navController: NavController) {
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
             Text(
-                text = "වී වගාව සඳහා බිම් සැකසීම මගින් වැපිරීම සඳහා පස සකසා ගැනීම, වල් පැළෑටි පාලනය, මුල් වර්ධනය ක්\u200Dරමවත් කිරීම," +
-                        " කාබනික ද්\u200Dරව්\u200Dය පසට මිශ්\u200Dර කිරීම හා පළිබෝධ පාලනය කිරීම යන අරමුණු ඉටුකර ගත හැකිය." +
-                        " බිම් සැකසීම තෙත් සහ විය ලියන ආකාර වලින් සිදු කළ හැකි අතර බහුලව භාවිතා වෙන්නේ තෙත් ආකාරයට(මඩට) බිම් සැකසීමයි.\n" +
-                        "\n" +
-                        "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n",
+                text = description,
                 fontSize = 16.sp,
                 textAlign = TextAlign.Justify,
                 modifier = Modifier.padding(16.dp)

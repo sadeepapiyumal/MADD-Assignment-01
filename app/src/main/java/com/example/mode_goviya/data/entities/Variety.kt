@@ -20,5 +20,10 @@ import androidx.room.PrimaryKey
 data class Variety(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val districtId: Int,
-    val name: String
+    val name: String,
+    // additional attributes
+    val harvestAmount: Double = 0.0, // tons/ha or suitable unit
+    val periodMonths: Int = 0,
+    val color: String = "",
+    val diseaseResistance: String = ""
 )

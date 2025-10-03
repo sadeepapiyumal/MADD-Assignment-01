@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mode_goviya.R
+import com.example.mode_goviya.ui.components.SpeakerTtsButton
 
 @Composable
 fun FertilizingSub1Page(navController: NavController) {
@@ -118,6 +119,14 @@ fun SubTopicCard6(title: String, description: String) {
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503)
             )
+            Spacer(modifier = Modifier.height(6.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                SpeakerTtsButton(textToSpeak = description)
+            }
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = description,

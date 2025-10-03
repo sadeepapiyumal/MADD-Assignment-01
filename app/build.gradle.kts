@@ -51,12 +51,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    // Material Icons Extended (for Icons.Filled.VolumeUp etc.)
+    implementation("androidx.compose.material:material-icons-extended")
     implementation("com.google.accompanist:accompanist-pager:0.36.0")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.36.0")
-    implementation("androidx.compose.ui:ui:1.5.0")
-    implementation("androidx.compose.material3:material3:1.1.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.0")
-    implementation("androidx.activity:activity-compose:1.9.0")
+    // (Removed duplicate explicit Compose deps; using BOM + libs aliases above)
 
 
     implementation(libs.androidx.navigation.compose)
@@ -74,9 +73,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //room
-    implementation("androidx.room:room-ktx:2.6.0")
-    ksp("androidx.room:room-compiler:2.6.0")
+    // Room via version catalog (libs) already declared above
 
     // Coroutines + lifecycle
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")

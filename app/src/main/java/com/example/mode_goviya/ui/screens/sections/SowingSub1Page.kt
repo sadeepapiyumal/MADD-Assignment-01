@@ -7,8 +7,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,20 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mode_goviya.R
-import com.example.mode_goviya.util.TtsManager
-import androidx.compose.ui.platform.LocalContext
+import com.example.mode_goviya.ui.components.SpeakerTtsButton
 
 @Composable
 fun SowingSub1Page(navController: NavController) {
-    val context = LocalContext.current
-    val tts = remember { TtsManager(context) }
-
-    // Initialize and cleanup
-    DisposableEffect(Unit) {
-        tts.init()
-        onDispose { tts.shutdown() }
-    }
-
     val descriptionText = "වී වගාව සඳහා සෑම විටම පළවීමේ ශක්තියෙන් වැඩි, වෙනස් වී වර්ග සමග මිශ්‍රව නොමැති, " +
             "අපද්‍රව්‍ය, වල් බීජ හා හානි වූ බීජ අවම මට්ටමකින් පවතින උසස් ගුණාත්මක භාවයෙන් යුතු බිත්තර වී භාවිතා කළ යුතුය. " +
             "එමගින් නිරෝගී, ශක්තිමත්, ඒකාකාරී පැල ගහණයක් හා ඉහළ අස්වැන්නක් ලබාගත හැකිය.\n\n" +
@@ -106,25 +94,13 @@ fun SowingSub1Page(navController: NavController) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 🔊 TTS Buttons
+        // 🔊 Speaker icon button near header to read the description
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(
-                onClick = { tts.speak(descriptionText) },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF034503))
-            ) {
-                Text("ඇහුනට", color = Color.White, fontSize = 16.sp)
-            }
-
-            Button(
-                onClick = { tts.stop() },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB71C1C))
-            ) {
-                Text("නවතා", color = Color.White, fontSize = 16.sp)
-            }
+            SpeakerTtsButton(textToSpeak = descriptionText)
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -175,6 +151,14 @@ fun SubTopicCardWithTable(title: String, description: String, tableData: List<Li
             )
             Spacer(modifier = Modifier.height(6.dp))
             if (description.isNotEmpty()) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(textToSpeak = description)
+                }
+                Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = description,
                     fontSize = 16.sp,

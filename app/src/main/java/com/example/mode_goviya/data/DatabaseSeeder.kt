@@ -1,13 +1,9 @@
 package com.example.mode_goviya.data
 
-import android.content.Context
 import com.example.mode_goviya.data.entities.District
 import com.example.mode_goviya.data.entities.Variety
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 object DatabaseSeeder {
-    // Example data - Sinhala names for districts, and sample varieties (change to your real list)
     private val districtNames = listOf(
         "කොළඹ","ගම්පහ","කළුතර","මහනුවර","මාතලේ","නුවරඑළිය",
         "ගාල්ල","මාතර","හම්බන්තොට","යාපනය","කිලිනොච්චිය",
@@ -15,30 +11,53 @@ object DatabaseSeeder {
         "ත්‍රිකුණාමළය","කුරුණෑගල","පුත්තලම","අනුරාධපුර",
         "පොළොන්නරුව","බදුල්ල","මොනරාගල","රත්නපුර","කෑගල්ල"
     )
-
-    // A minimal variety list; you can expand per district
     private val defaultVarieties = listOf("Bg 300","Bg 352","At 307","Su 9","Swarna")
 
-    suspend fun seedIfNeeded(context: Context) = withContext(Dispatchers.IO) {
-        val db = AppDatabase.getDatabase(context)
-        val repo = LocationRepository(db)
+    suspend fun seed(db: AppDatabase) {
+        val districtDao = db.districtDao()
+        val varietyDao = db.varietyDao()
 
-        if (repo.districtCount() > 0) return@withContext // already seeded
+        if (districtDao.count() > 0) return // already seeded
 
-        // insert districts and assign varieties (simple mapping: same default varieties for all)
-        val createdIds = mutableListOf<Int>()
+        val ids = mutableListOf<Long>()
         for (name in districtNames) {
-            val idLong = repo.insertDistrict(District(name = name))
-            createdIds += idLong.toInt()
+            val id = districtDao.insert(District(name = name))
+            ids.add(id)
         }
 
-        // Insert varieties: here we add the same variety options per district.
-        val toInsert = mutableListOf<Variety>()
-        for (districtId in createdIds) {
-            defaultVarieties.forEach { v ->
-                toInsert += Variety(districtId = districtId, name = v)
+        val varietiesToInsert = mutableListOf<Variety>()
+        for (districtId in ids) {
+            for (v in defaultVarieties) {
+                val sample = when (v) {
+                    "Bg 300" -> Variety(
+                        districtId = districtId.toInt(), name = v,
+                        harvestAmount = 5.9, periodMonths = 3,
+                        color = "සදු", diseaseResistance = "බැලෑල්ල සහිත"
+                    )
+                    "Bg 352" -> Variety(
+                        districtId = districtId.toInt(), name = v,
+                        harvestAmount = 6.0, periodMonths = 3,
+                        color = "රතු", diseaseResistance = "උච්ච"
+                    )
+                    "At 307" -> Variety(
+                        districtId = districtId.toInt(), name = v,
+                        harvestAmount = 5.2, periodMonths = 3,
+                        color = "කහ", diseaseResistance = "මධ්‍යම"
+                    )
+                    "Su 9" -> Variety(
+                        districtId = districtId.toInt(), name = v,
+                        harvestAmount = 5.5, periodMonths = 4,
+                        color = "සුදු", diseaseResistance = "හොඳ"
+                    )
+                    else -> Variety(
+                        districtId = districtId.toInt(), name = v,
+                        harvestAmount = 5.0, periodMonths = 3,
+                        color = "සුදු", diseaseResistance = "සාමාන්‍ය"
+                    )
+                }
+                varietiesToInsert.add(sample)
             }
         }
-        repo.insertVarieties(toInsert)
+        varietyDao.insertAll(varietiesToInsert)
     }
 }
