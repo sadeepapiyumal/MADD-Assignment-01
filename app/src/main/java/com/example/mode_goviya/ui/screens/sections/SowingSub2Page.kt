@@ -45,13 +45,13 @@ fun SowingSub2Page(navController: NavController) {
             // Main Title
             Text(
                 text = "බීජ වැපිරීම",
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503),
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 10.dp), // take space on the left
+                    .offset(y = 25.dp), // take space on the left
             )
 
             // Image on the right
@@ -60,7 +60,7 @@ fun SowingSub2Page(navController: NavController) {
                 contentDescription = "Wet Sowing",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -83,11 +83,11 @@ fun SowingSub2Page(navController: NavController) {
         SubTopicCard4(
             title = " ",
             description = "මේ සඳහා මුල් අද්දවා අද්දවා ගත් (කණු කැපුණු) බිත්තර වී යොදා ගනියි. බිත්තර වී අවශ්\u200Dයතාවය මධ්\u200Dයස්ථ දිගට වී (නාඩු) සඳහා" +
-                    " අක්කරයකට කිලෝ ග්\u200Dරෑම් 41ක්ද, කුඩා රවුම් වී (සම්බා) සඳහා   අක්කරයකට කිලෝ ග්\u200Dරෑම් 32ක්ද වේ." +
+                    " අක්කරයකට කිලෝ ග්\u200Dරෑම් 41ක්ද,කුඩා රවුම් වී (සම්බා) සඳහා අක්කරයකට කිලෝ ග්\u200Dරෑම් 32ක්ද වේ." +
                     "වැපිරීම සඳහා බිත්තර වී පැල කර ගැනීම පහත සඳහන් පරිදි සිදුකරයි.\n" +
                     "\n" +
                     "\n" +
-                    "•පළමුව බීජ වල පැලවීමේ ප්\u200Dරමාණය පරීක්ෂා කිරීම සඳහා බීජ නියැදියක් (බීජ දෝතක් පමණ) පැළ කර බැලිය යුතුය.\n" +
+                    "•පළමුව බීජ වල පැලවීමේ ප්\u200Dරමාණය පරීක්ෂා කිරීම සඳහා බීජ නියැදියක් (බීජ දෝතක් පමණ) පැළ  කර බැලිය යුතුය.\n" +
                     "\n" +
                     "•බීජ පිරිසිදු ජලයෙන් හොඳින් සෝදා බෝල් හා අනෙකුත් අපද්\u200Dරව්\u200Dය ඉවත් කරගත යුතුය.\n" +
                     "\n" +
@@ -140,7 +140,7 @@ fun SubTopicCard4(title: String, description: String) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
                 color = Color.Black
             )

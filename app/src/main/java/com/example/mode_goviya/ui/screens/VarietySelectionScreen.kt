@@ -20,6 +20,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material3.IconButton
+import android.speech.tts.TextToSpeech
+import androidx.compose.runtime.DisposableEffect
+import java.util.Locale
+import androidx.compose.ui.res.painterResource
+import com.example.mode_goviya.R
 
 @Composable
 fun VarietySelectionScreen(
@@ -29,6 +35,25 @@ fun VarietySelectionScreen(
     val context = LocalContext.current
     val prefs = remember { Prefs(context) }
     val vm: DistrictViewModel = viewModel()
+    // Text-To-Speech
+    val tts = remember {
+        TextToSpeech(context) { /* onInit handled in LaunchedEffect below */ }
+    }
+    LaunchedEffect(tts) {
+        // Configure language after engine is created
+        val localeSi = Locale("si", "LK")
+        val availability = tts.setLanguage(localeSi)
+        if (availability == TextToSpeech.LANG_MISSING_DATA || availability == TextToSpeech.LANG_NOT_SUPPORTED) {
+            tts.language = Locale.getDefault()
+        }
+    }
+    // Ensure TTS is shutdown when this composable leaves
+    DisposableEffect(Unit) {
+        onDispose {
+            tts.stop()
+            tts.shutdown()
+        }
+    }
 
     // Observe districts and varieties
     val districts by vm.districts.collectAsState()
@@ -116,29 +141,49 @@ fun VarietySelectionScreen(
                                 )
                                 Spacer(Modifier.height(4.dp))
                                 Text(
-                                    text = "අස්වනු: ${"%.1f".format(v.harvestAmount)}", // e.g., 5.9
+                                    text = "අස්වැන්න: හෙක්ටයාරයකට ටොන් ${"%.1f".format(v.harvestAmount)}", // e.g., 5.9
                                     style = MaterialTheme.typography.bodySmall
                                 )
                                 Text(
-                                    text = "කාලය: ${v.periodMonths} මාස",
+                                    text = "අස්වනු නෙලීමට ගතවෙන කාලය: මාස ${v.periodMonths}",
                                     style = MaterialTheme.typography.bodySmall
                                 )
                                 Text(
-                                    text = "වර්ණය: ${v.color}",
+                                    text = "සහලේ වර්ණය: ${v.color}",
                                     style = MaterialTheme.typography.bodySmall
                                 )
                                 Text(
-                                    text = "රෝග ප්‍රතිරෝධය: ${v.diseaseResistance}",
+                                    text = "රෝග/පළිබෝධක ප්\u200Dරතිරෝධතා මට්ටම: ${v.diseaseResistance}",
                                     style = MaterialTheme.typography.bodySmall
                                 )
                             }
                         },
                         trailingIcon = {
-                            Icon(
-                                imageVector = Icons.Filled.VolumeUp,
-                                contentDescription = null,
-                                tint = LocalContentColor.current
-                            )
+                            IconButton(onClick = {
+                                val spoken = buildString {
+                                    append(v.name)
+                                    append(". ")
+                                    append("අස්වැන්න හෙක්ටයාරයකට ටොන් ")
+                                    append("%.1f".format(v.harvestAmount))
+                                    append(". ")
+                                    append("කාලය මාස ")
+                                    append(v.periodMonths)
+                                    append(". ")
+                                    append("වර්ණය ")
+                                    append(v.color)
+                                    append(". ")
+                                    append("රෝග ප්‍රතිරෝධය ")
+                                    append(v.diseaseResistance)
+                                }
+                                tts.speak(spoken, TextToSpeech.QUEUE_FLUSH, null, "variety_${'$'}{v.id}")
+                            }) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.icons_speaker),
+                                    contentDescription = null,
+                                    tint = Color.Unspecified,
+                                    modifier = Modifier.size(24.dp)
+                                )
+                            }
                         },
                         onClick = {
                             selectedVariety = v.name

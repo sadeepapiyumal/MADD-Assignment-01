@@ -45,13 +45,13 @@ fun GroundSub2Page(navController: NavController) {
             // Main Title
             Text(
                 text = "බිම් සැකසීම",
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503),
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 10.dp), // take space on the left
+                    .offset(y = 25.dp), // take space on the left
             )
 
             // Image on the right
@@ -60,7 +60,7 @@ fun GroundSub2Page(navController: NavController) {
                 contentDescription = "Wet Preparation",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -82,8 +82,8 @@ fun GroundSub2Page(navController: NavController) {
 
         // Reusable card function for each sub-subtopic
         SubTopicCard1(
-            title = "පළමු සී සෑම(පුරන් හීය, බිං නැගුම)\n",
-            description = "වර්ෂාව ප්\u200Dරමාද වූ විට හෝ මඩට බිම් සැකසීමට තරම් ප්\u200Dරමාණවත් ජලය නොමැති වූ විට වියළි බිම් සැකසීම කළ හැකිය." +
+            title = "පළමු සී සෑම\n(පුරන් හීය, බිං නැගුම)\n",
+            description = "\nවර්ෂාව ප්\u200Dරමාද වූ විට හෝ මඩට බිම් සැකසීමට තරම් ප්\u200Dරමාණවත් ජලය නොමැති වූ විට වියළි බිම් සැකසීම කළ හැකිය." +
                     " මේ මගින් වගා කන්නයේ පළමු වැසි වී ගොවිතැනට යොදාගත හැකිය. සැහැල්ලු පස් ඇති (වැලි සහිත) කුඹුරු වලට මෙම ක්\u200Dරමය උචිතය." +
                     "රෝද දෙක හෝ හතර ට්\u200Dරැක්ටර් යොදා ගනිමින් සෙන්ටිමීටර් අටක් දොළහක් ගැඹුරට සීසෑම සිදුකරයි." +
                     " පළමු සීසෑමෙන් හා නියර සුද්ද කිරීමෙන් සති එකත් දෙකක් අතර කාලයකට පසුව" +
@@ -102,7 +102,7 @@ fun SubTopicCard1(title: String, description: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 18.dp),
         shape = RectangleShape, // default rounded
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF7E6))
     ) {
@@ -124,7 +124,7 @@ fun SubTopicCard1(title: String, description: String) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
                 color = Color.Black
             )

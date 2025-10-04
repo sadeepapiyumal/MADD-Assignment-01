@@ -92,7 +92,6 @@ fun DistrictSelectionScreen(
                 shadowElevation = 0.dp
             ) {
 
-
                 // Items (remove top/bottom gap so it looks continuous)
                 districts.forEachIndexed { index, d ->
                     val pad = when (index) {
@@ -117,7 +116,11 @@ fun DistrictSelectionScreen(
                         modifier = Modifier.fillMaxWidth(),
                         contentPadding = pad
                     )
-                    if (index < districts.lastIndex) Divider(color = menuBg)
+                    if (index < districts.lastIndex) Divider(
+                        color = Color.Black,
+                        thickness = 1.2.dp,
+                        modifier = Modifier.padding(horizontal = 16.dp)
+                    )
                 }
             }
         }

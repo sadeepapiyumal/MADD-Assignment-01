@@ -45,13 +45,13 @@ fun FertilizingSub2Page(navController: NavController) {
             // Main Title
             Text(
                 text = "පොහොර යෙදීම",
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503),
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 10.dp), // take space on the left
+                    .offset(y = 25.dp), // take space on the left
             )
 
             // Image on the right
@@ -60,7 +60,7 @@ fun FertilizingSub2Page(navController: NavController) {
                 contentDescription = "Organic Fertilizing",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -68,7 +68,7 @@ fun FertilizingSub2Page(navController: NavController) {
 
         // Page Title
         Text(
-            text = "කාබනික පොහොර භාවිතය",
+            text = "කාබනික පොහොර භාවිතය\n",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF034503),
@@ -82,7 +82,7 @@ fun FertilizingSub2Page(navController: NavController) {
         // Reusable card function for each sub-subtopic
         SubTopicCard7(
             title = " ",
-            description = "දිගින් දිගටම රසායනික පොහොර පමණක් භාවිතා කිරීම නිසා පසෙහි අහිතකර වෙනස්කම්ද,කාබනික ද්\u200Dරව්\u200Dය අඩුවීමද සිදුවේ." +
+            description = "\nදිගින් දිගටම රසායනික පොහොර පමණක් භාවිතා කිරීම නිසා පසෙහි අහිතකර වෙනස්කම්ද,කාබනික ද්\u200Dරව්\u200Dය අඩුවීමද සිදුවේ." +
                     " මේ හේතුව නිසා කුඹුරු වල වී අස්වැන්න අඩුවීම හෝ වැඩි නොවී එක් මට්ටමක රැඳී තිබීම සුලභ තත්ත්වයක් වී තිබේ." +
                     "මෙම තත්ත්වයෙන් මිදීම සඳහා රසායනික පොහොර සහ කාබනික පොහොර යන දෙවර්ගයම යෙදිය යුතු අතර එමඟින්" +
                     " වඩාත් සාර්ථක අස්වැන්නක් ලබාගත හැකිය. තවද කාබනික පොහොර යෙදීමෙන් රසායනික පොහොරවල කාර්යක්ෂමතාවය වැඩිවේ." +
@@ -121,7 +121,7 @@ fun SubTopicCard7(title: String, description: String) {
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503)
             )
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(1.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
@@ -132,7 +132,7 @@ fun SubTopicCard7(title: String, description: String) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
                 color = Color.Black
             )

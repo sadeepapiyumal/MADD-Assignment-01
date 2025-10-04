@@ -37,6 +37,23 @@ abstract class AppDatabase : RoomDatabase() {
                             CoroutineScope(Dispatchers.IO).launch {
                                 val database = getDatabase(context) // safe: will return instance
                                 DatabaseSeeder.seed(database)
+                                // store current seed version
+                                val prefs = context.getSharedPreferences("db_seed", Context.MODE_PRIVATE)
+                                prefs.edit().putInt("seed_version", DatabaseSeeder.SEED_VERSION).apply()
+                            }
+                        }
+                        override fun onOpen(db: SupportSQLiteDatabase) {
+                            super.onOpen(db)
+                            // if seed version changed, reseed automatically
+                            CoroutineScope(Dispatchers.IO).launch {
+                                val prefs = context.getSharedPreferences("db_seed", Context.MODE_PRIVATE)
+                                val current = prefs.getInt("seed_version", -1)
+                                if (current != DatabaseSeeder.SEED_VERSION) {
+                                    val database = getDatabase(context)
+                                    database.clearAllTables()
+                                    DatabaseSeeder.seed(database)
+                                    prefs.edit().putInt("seed_version", DatabaseSeeder.SEED_VERSION).apply()
+                                }
                             }
                         }
                     })

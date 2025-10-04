@@ -23,15 +23,15 @@ import com.example.mode_goviya.ui.components.SpeakerTtsButton
 fun FertilizingPage(navController: NavController) {
     val description = "අතීතයේ බොහෝ විට වසරකට එක් කන්නයක් පමණක් වී වගා කර ඇති නිසා පසේ සාරවත්භාවය ඉක්මනින් අඩු නොවිණි." +
             "එහෙත් දැනට වැඩි අස්වනු ලබාදෙන වී ප්\u200Dරභේද, කන්න දෙකේම වගා කිරීම නිසා පෝෂක වැඩි ප්\u200Dරමාණයක් පසෙන් ඉවත්වෙයි." +
-            "මේ නිසා වී ශාකයට පෝෂක ඌණතාවයන් ඇතිවීම වැළැක්වීමට රසායනික හෝ කාබනික පොහොර මගින් " +
+            "මේ නිසා වී ශාකයට පෝෂක ඌණතාවයන් ඇති වීම වැළැක්වීමට රසායනික හෝ කාබනික පොහොර මගින් " +
             "එම පෝෂණ අවශ්\u200Dයතාවය ලබාදිය යුතුය.\n" +
             "\n" +
-            "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n"
+            "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න."
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFDFFFD6))
-            .padding(6.dp)
+            .padding(5.dp)
     ) {
         // Top Row with title and image
         Row(
@@ -47,15 +47,8 @@ fun FertilizingPage(navController: NavController) {
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 15.dp)
+                    .offset(y = 25.dp)
 
-            )
-
-            SpeakerTtsButton(
-                textToSpeak = description,
-                modifier = Modifier
-                    .offset(y = 0.dp)
-                    .size(36.dp)
             )
 
             Image(
@@ -63,7 +56,7 @@ fun FertilizingPage(navController: NavController) {
                 contentDescription = "Fertilizing",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -76,15 +69,29 @@ fun FertilizingPage(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Text(
-                text = description,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(16.dp)
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = description,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.padding(start = 15.dp, top = 16.dp, end = 15.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp, top = 10.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(
+                        textToSpeak = description,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Subtopic Sections
         val subTopics = listOf(
@@ -101,22 +108,24 @@ fun FertilizingPage(navController: NavController) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)
+                        .height(68.dp)
                         .clickable { navController.navigate(route) },
                     shape = RectangleShape,
                     colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = title,
-                            fontSize = 20.sp,
+                            fontSize = 22.sp,
                             fontWeight = FontWeight.Medium,
-                            textAlign = TextAlign.Center
-                            //color = Color(0xFF000000)
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 }

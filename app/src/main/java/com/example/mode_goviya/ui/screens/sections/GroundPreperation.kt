@@ -25,12 +25,12 @@ fun GroundPreparationPage(navController: NavController) {
             " කාබනික ද්\u200Dරව්\u200Dය පසට මිශ්\u200Dර කිරීම හා පළිබෝධ පාලනය කිරීම යන අරමුණු ඉටුකර ගත හැකිය." +
             " බිම් සැකසීම තෙත් සහ විය ලියන ආකාර වලින් සිදු කළ හැකි අතර බහුලව භාවිතා වෙන්නේ තෙත් ආකාරයට(මඩට) බිම් සැකසීමයි.\n" +
             "\n" +
-            "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n"
+            "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න."
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFDFFFD6))
-            .padding(6.dp)
+            .padding(5.dp)
     ) {
         // Top Row with title and image
         Row(
@@ -46,15 +46,8 @@ fun GroundPreparationPage(navController: NavController) {
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 15.dp)
+                    .offset(y = 25.dp)
 
-            )
-
-            SpeakerTtsButton(
-                textToSpeak = description,
-                modifier = Modifier
-                    .offset(y = 0.dp)
-                    .size(36.dp)
             )
 
             Image(
@@ -62,7 +55,7 @@ fun GroundPreparationPage(navController: NavController) {
                 contentDescription = "Ground Preparation",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -75,20 +68,36 @@ fun GroundPreparationPage(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Text(
-                text = description,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(16.dp)
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = description,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.padding(start = 15.dp, top = 16.dp, end = 15.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding( bottom = 8.dp, top = 1.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(
+                        textToSpeak = description,
+                        modifier = Modifier
+                            .size(28.dp)
+
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Subtopic Sections
         val subTopics = listOf(
-            Pair("තෙත් ආකාරයට(මඩට)බිම් සැකසීම", "ground_preparation_sub1"),
-            Pair("වියලි ආකාරයට(ගොඩට) බිම් සැකසීම", "ground_preparation_sub2"),
+            Pair("තෙත් ආකාරයට(මඩට)\nබිම් සැකසීම", "ground_preparation_sub1"),
+            Pair("වියලි ආකාරයට(ගොඩට)\nබිම් සැකසීම", "ground_preparation_sub2"),
             Pair("අවම බිම් සැකසීම", "ground_preparation_sub3")
         )
 
@@ -100,22 +109,24 @@ fun GroundPreparationPage(navController: NavController) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)
+                        .height(68.dp)
                         .clickable { navController.navigate(route) },
                     shape = RectangleShape,
                     colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = title,
-                            fontSize = 20.sp,
+                            fontSize = 22.sp,
                             fontWeight = FontWeight.Medium,
-                            textAlign = TextAlign.Center
-                            //color = Color(0xFF000000)
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 }

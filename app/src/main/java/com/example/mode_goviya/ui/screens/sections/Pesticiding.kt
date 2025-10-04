@@ -30,7 +30,7 @@ fun PesticidingPage(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFDFFFD6))
-            .padding(6.dp)
+            .padding(5.dp)
     ) {
         // Top Row with title and image
         Row(
@@ -46,15 +46,8 @@ fun PesticidingPage(navController: NavController) {
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 15.dp)
+                    .offset(y = 25.dp)
 
-            )
-
-            SpeakerTtsButton(
-                textToSpeak = description,
-                modifier = Modifier
-                    .offset(y = 0.dp)
-                    .size(36.dp)
             )
 
             Image(
@@ -62,11 +55,11 @@ fun PesticidingPage(navController: NavController) {
                 contentDescription = "Pesticiding",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
-        Spacer(modifier = Modifier.height(1.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Description in a Card
         Card(
@@ -75,15 +68,29 @@ fun PesticidingPage(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Text(
-                text = description,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(16.dp)
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = description,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.padding(start = 15.dp, top = 16.dp, end = 15.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp, top = 10.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(
+                        textToSpeak = description,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Subtopic Sections
         val subTopics = listOf(
@@ -100,22 +107,24 @@ fun PesticidingPage(navController: NavController) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)
+                        .height(68.dp)
                         .clickable { navController.navigate(route) },
                     shape = RectangleShape,
                     colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = title,
-                            fontSize = 20.sp,
+                            fontSize = 22.sp,
                             fontWeight = FontWeight.Medium,
-                            textAlign = TextAlign.Center
-                            //color = Color(0xFF000000)
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 }

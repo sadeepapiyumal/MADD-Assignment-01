@@ -40,7 +40,7 @@ fun HarvestingPage(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFDFFFD6))
-            .padding(6.dp)
+            .padding(5.dp)
             .verticalScroll(rememberScrollState()),
     ) {
         // Top Row with title and image
@@ -57,15 +57,8 @@ fun HarvestingPage(navController: NavController) {
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 15.dp)
+                    .offset(y = 25.dp)
 
-            )
-
-            SpeakerTtsButton(
-                textToSpeak = description,
-                modifier = Modifier
-                    .offset(y = 0.dp)
-                    .size(36.dp)
             )
 
             Image(
@@ -73,7 +66,7 @@ fun HarvestingPage(navController: NavController) {
                 contentDescription = "Harvesting",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -86,15 +79,29 @@ fun HarvestingPage(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Text(
-                text = description,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(16.dp)
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = description,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.padding(start = 15.dp, top = 16.dp, end = 15.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp, top = 1.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(
+                        textToSpeak = description,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
 
 

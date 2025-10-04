@@ -44,7 +44,7 @@ fun HomeScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFF6EE776)) // green background
-            .padding(12.dp),
+            .padding(22.dp),
         verticalArrangement = Arrangement.Top, // start from top
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

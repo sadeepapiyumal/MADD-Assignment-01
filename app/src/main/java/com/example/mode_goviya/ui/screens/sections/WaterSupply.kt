@@ -28,13 +28,13 @@ fun WateringPage(navController: NavController) {
             " ලියැදිවල ජලය දිගටම බැඳ තැබීම නිසා ජලයෙන් වැඩි කොටසක් අපතේ යයි." +
             " මේ නිසා වී ශාකය ජලයට වඩාත් සංවේදී වන බණ්ඩි හා මල් පිපෙන අවදිවලදී ප්‍රමාණවත් ලෙස " +
             "ජලය සපයා ගැනීමට නොහැකි වුවහොත් එය වී වගා කරන ප්‍රදේශවල අස්වැන්න අඩුවීමට ප්‍රධාන ලෙස බලපායි." +
-            " එම නිසා වගාවට නිවැරදිව ජලය සැපයීමෙන් උපරිම වී අස්වැන්නක් ලබා ගැනීම වර්තමානයේ ඉතාමත් වැදගත්ය."
+            " එම නිසා වගාවට නිවැරදිව ජලය සැපයීමෙන් උපරිම වී අස්වැන්නක් ලබා ගැනීම වර්තමානයේ ඉතාමත් වැදගත්ය.\n"
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFDFFFD6))
-            .padding(6.dp)
+            .padding(5.dp)
     ) {
         // Top Row with title and image
         Row(
@@ -53,24 +53,16 @@ fun WateringPage(navController: NavController) {
                     .offset(y = 25.dp)
             )
 
-            // Speaker icon button to trigger TTS
-            SpeakerTtsButton(
-                textToSpeak = description,
-                modifier = Modifier
-                    .offset(y = 4.dp)
-                    .size(36.dp)
-            )
-
             Image(
                 painter = painterResource(id = R.drawable.watering),
                 contentDescription = "Watering",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(1.dp))
 
         // Description in a Card
         Card(
@@ -79,15 +71,29 @@ fun WateringPage(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Text(
-                text = description,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(16.dp)
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = description,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.padding(start = 15.dp, top = 16.dp, end = 15.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp, top = 1.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(
+                        textToSpeak = description,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Speaker button above handles TTS
     }

@@ -45,13 +45,13 @@ fun GroundSub3Page(navController: NavController) {
             // Main Title
             Text(
                 text = "බිම් සැකසීම",
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503),
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 10.dp), // take space on the left
+                    .offset(y = 25.dp), // take space on the left
             )
 
             // Image on the right
@@ -60,7 +60,7 @@ fun GroundSub3Page(navController: NavController) {
                 contentDescription = "Wet Preparation",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -69,7 +69,7 @@ fun GroundSub3Page(navController: NavController) {
         // Page Title
         Text(
             text = "වියලි ආකාරයට(ගොඩට)\n" +
-                    "බිම් සැකසීම",
+                    "බිම් සැකසීම\n",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF034503),
@@ -83,7 +83,7 @@ fun GroundSub3Page(navController: NavController) {
         // Reusable card function for each sub-subtopic
         SubTopicCard2(
             title = "අවම බිම් සැකසීම\n",
-            description = "වර්ෂාව ප්\u200Dරමාද වූ විට හෝ බිම් සැකසීම සඳහා ප්\u200Dරමාණවත් ලෙස ජලය නොමැති විට කෙටි කලකින් බිම් සකස් කර ගැනීම සඳහා" +
+            description = "\nවර්ෂාව ප්\u200Dරමාද වූ විට හෝ බිම් සැකසීම සඳහා ප්\u200Dරමාණවත් ලෙස ජලය නොමැති විට කෙටි කලකින් බිම් සකස් කර ගැනීම සඳහා" +
                     " අවම බිම් සැකසීම සිදු කළ හැකිය. මෙහිදී පසේ ව්\u200Dයුහයට වන හානිය අඩු වන අතර පළමු හීය වෙනුවට වල් නාශක භාවිතා කරයි." +
                     " වල් පැළ මැරුණු පසුව රොටවේටරයෙන් සී සා බීජ වපුරයි. පේලියට වපුරන්නේ නම් දෙවන හීය පේළි වලට පමණක් සීමා වෙයි." +
                     " නියර සුද්ද කිරීම අවමය.\n"
@@ -123,7 +123,7 @@ fun SubTopicCard2(title: String, description: String) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
                 color = Color.Black
             )

@@ -45,13 +45,13 @@ fun FertilizingSub1Page(navController: NavController) {
             // Main Title
             Text(
                 text = "පොහොර යෙදීම",
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503),
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 10.dp), // take space on the left
+                    .offset(y = 25.dp), // take space on the left
             )
 
             // Image on the right
@@ -60,7 +60,7 @@ fun FertilizingSub1Page(navController: NavController) {
                 contentDescription = "Chemical Fertilizing",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -108,7 +108,7 @@ fun SubTopicCard6(title: String, description: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 18.dp),
         shape = RectangleShape, // default rounded
         colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF7E6))
     ) {
@@ -119,7 +119,7 @@ fun SubTopicCard6(title: String, description: String) {
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503)
             )
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(1.dp))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
@@ -130,7 +130,7 @@ fun SubTopicCard6(title: String, description: String) {
             Spacer(modifier = Modifier.height(6.dp))
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
                 color = Color.Black
             )

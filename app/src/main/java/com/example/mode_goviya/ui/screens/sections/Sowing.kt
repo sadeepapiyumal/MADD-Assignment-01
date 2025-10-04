@@ -21,16 +21,16 @@ import com.example.mode_goviya.ui.components.SpeakerTtsButton
 
 @Composable
 fun SowingPage(navController: NavController) {
-    val description = "වී වගාවෙන් වැඩි අස්වැන්නක් ලබා ගැනීම සඳහා කන්නයට හා ප්\u200Dරදේශයට ගැලපෙන විවර්ගය තෝරාගත යුතුය. මෙයට අමතරව පාරිභෝගික රුචිකත්වය පිළිබඳව ද සැලකිලිමත් විය යුතුය.\n" +
-            "\n" +
-            "බීජ වැපිරීම ප්\u200Dරධාන වශයෙන් තෙත් ක්\u200Dරමයට හෝ වියළි ක්\u200Dරමයට සිදුකළ හැකිය.\n" +
+    val description = "වී වගාවෙන් වැඩි අස්වැන්නක් ලබා ගැනීම සඳහා කන්නයට හා ප්\u200Dරදේශයට ගැලපෙන වි වර්ගය තෝරාගත යුතුය. මෙයට අමතරව පාරිභෝගික රුචිකත්වය පිළිබඳව ද සැලකිලිමත් විය යුතුය."+
+
+            " බීජ වැපිරීම ප්\u200Dරධාන වශයෙන් තෙත් ක්\u200Dරමයට හෝ වියළි ක්\u200Dරමයට  සිදුකළ හැකිය.\n" +
             "\n" +
             "වැඩිදුර තොරතුරු සඳහා අදාළ විස්තරය ස්පර්ශ කරන්න.\n"
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFDFFFD6))
-            .padding(6.dp)
+            .padding(5.dp)
     ) {
         // Top Row with title and image
         Row(
@@ -46,15 +46,7 @@ fun SowingPage(navController: NavController) {
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 15.dp)
-
-            )
-
-            SpeakerTtsButton(
-                textToSpeak = description,
-                modifier = Modifier
-                    .offset(y = 0.dp)
-                    .size(36.dp)
+                    .offset(y = 25.dp)
             )
 
             Image(
@@ -62,7 +54,7 @@ fun SowingPage(navController: NavController) {
                 contentDescription = "Sowing",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -75,15 +67,29 @@ fun SowingPage(navController: NavController) {
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
             elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
         ) {
-            Text(
-                text = description,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Justify,
-                modifier = Modifier.padding(16.dp)
-            )
+            Column(modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = description,
+                    fontSize = 18.sp,
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier.padding(start = 15.dp, top = 16.dp, end = 15.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp, top = 1.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    SpeakerTtsButton(
+                        textToSpeak = description,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            }
         }
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         // Subtopic Sections
         val subTopics = listOf(
@@ -100,22 +106,24 @@ fun SowingPage(navController: NavController) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)
+                        .height(68.dp)
                         .clickable { navController.navigate(route) },
                     shape = RectangleShape,
                     colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF5E0)),
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = title,
-                            fontSize = 20.sp,
+                            fontSize = 22.sp,
                             fontWeight = FontWeight.Medium,
-                            textAlign = TextAlign.Center
-                            //color = Color(0xFF000000)
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 }

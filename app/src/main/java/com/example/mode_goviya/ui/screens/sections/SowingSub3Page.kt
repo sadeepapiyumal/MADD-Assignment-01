@@ -45,13 +45,13 @@ fun SowingSub3Page(navController: NavController) {
             // Main Title
             Text(
                 text = "බීජ වැපිරීම",
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF034503),
                 textAlign = TextAlign.Start,
                 modifier = Modifier
                     .weight(1f)
-                    .offset(y = 10.dp), // take space on the left
+                    .offset(y = 25.dp), // take space on the left
             )
 
             // Image on the right
@@ -60,7 +60,7 @@ fun SowingSub3Page(navController: NavController) {
                 contentDescription = "Wet Sowing",
                 modifier = Modifier
                     .size(100.dp)
-                    .offset(y = (-15).dp)
+                    .offset(y = (-10).dp)
             )
         }
 
@@ -68,7 +68,7 @@ fun SowingSub3Page(navController: NavController) {
 
         // Page Title
         Text(
-            text = "වියළි ක්\u200Dරමයට වී වැපිරීම\n",
+            text = "\nවියළි ක්\u200Dරමයට වී වැපිරීම\n",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF034503),
@@ -82,12 +82,12 @@ fun SowingSub3Page(navController: NavController) {
         // Reusable card function for each sub-subtopic
         SubTopicCard5(
             title = " ",
-            description = "මෝසම් වර්ෂාව ප්\u200Dරමාද වන යල හා මහා කන්න වල වැලි සහිත කුඹුරුවල සිදුකරනු ලබයි." +
-                    "බිම් සැකසීම වියළි ලෙස සිදුකර, වියළි බීජ වැඩි ගනත්වයකින් වපුරයි. මෙය කැකුළන් වගාව ලෙසද හඳුන්වනු ලැබේ." +
+            description = "\nමෝසම් වර්ෂාව ප්\u200Dරමාද වන යල හා මහා කන්න වල වැලි සහිත කුඹුරුවල සිදුකරනු ලබයි." +
+                    " බිම් සැකසීම වියළි ලෙස සිදුකර,වියළි බීජ වැඩි ගනත්වයකින් වපුරයි. මෙය කැකුළන් වගාව ලෙසද හඳුන්වනු ලැබේ. " +
                     "මෙමගින් වර්ෂාව අඩු කාල සඳහා වාලි ජලය ඉතුරු කර ගත හැකිය.\n" +
                     "\n" +
                     "මෙම ක්\u200Dරමයට වගා කිරීමේදී බීජ වලට සිදුවිය හැකි හානිය වැඩි බැවින්ද වල්පැළ ගහනය අවම කර ගැනීම සඳහාද" +
-                    " අක්කරයට කිලෝ ග්\u200Dරෑම් 60ත් 100ත් අතර බීජ ප්\u200Dරමාණයක් භාවිතා කරයි.\n"
+                    " අක්කරයට කිලෝ ග්\u200Dරෑම් 60ත් 100ත් අතර බීජ ප්\u200Dරමාණයක්  භාවිතා කරයි.\n"
 
         )
 
@@ -121,10 +121,10 @@ fun SubTopicCard5(title: String, description: String) {
             ) {
                 SpeakerTtsButton(textToSpeak = description)
             }
-            Spacer(modifier = Modifier.height(6.dp))
+            Spacer(modifier = Modifier.height(5.dp))
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 textAlign = TextAlign.Justify,
                 color = Color.Black
             )
